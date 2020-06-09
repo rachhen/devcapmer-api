@@ -57,7 +57,7 @@ exports.getCourse = asyncHandler(async (req, res, next) => {
 /**
  * Add course
  *
- * @route GET /api/v1/bootcamps/:bootcampId/courses
+ * @route POST /api/v1/bootcamps/:bootcampId/courses
  * @param Request req
  * @param Response res
  * @param Next next
@@ -65,6 +65,7 @@ exports.getCourse = asyncHandler(async (req, res, next) => {
  */
 exports.addCourse = asyncHandler(async (req, res, next) => {
   req.body.bootcamp = req.params.bootcampId;
+  req.body.user = req.user.id;
 
   const bootcamp = await Bootcamp.findById(req.params.bootcampId);
 
